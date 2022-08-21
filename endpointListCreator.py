@@ -53,7 +53,7 @@ def start():
         with open(path+"/endpointWordlist.txt", "w+") as f:
             for i in new_file:
                 f.write(i+"\n")
-        
+        f2 = open()
 
 
     #Subdomain list scan, user enters a path to subdomain list text file
