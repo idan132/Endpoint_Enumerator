@@ -111,11 +111,11 @@ def start():
                     try:
                         print("Trying to GET " + target + line)
                         r = requests.get((target+line), headers=headers)
-                        print(r)
+                        print("Response Code: "+ r + "\n\n")
                         break
 
                     except:
-                        print("Connection refused by the server...")
+                        print("\n\nConnection refused by the server...")
                         print("Let me sleep for 5 seconds")
                         print("ZZzzzz...")
                         time.sleep(5)
