@@ -3,7 +3,7 @@
 # Writer: W1ld_Hunt3r
 #_________________________________________________________________________________________
 
-
+import time
 import requests
 import sys
 print(r"""
@@ -22,6 +22,10 @@ print(r"""
         `---'                                                                                                                           
                  
 """)
+ok_count = 0
+response_data = ""
+headers = {'User-Agent': 'Googlebot'}
+
 def start():
     scan_type = input("Choose Scan Type\n________________ \n\n 1- Single Target \n 2- Subdomain List \n\n Your Choice: ")
 
@@ -53,7 +57,25 @@ def start():
         with open(path+"/endpointWordlist.txt", "w+") as f:
             for i in new_file:
                 f.write(i+"\n")
-        f2 = open()
+        
+        f.close()
+        f2 = open(path+"/endpointWordlist.txt", "r+")
+        for line in f2:
+            r = ''
+            while r == '':
+                 try:
+                    print("Trying to GET " + target + line)
+                    r = requests.get((target+line), headers=headers)
+                    print(r)
+                    break
+
+                 except:
+                    print("Connection refused by the server...")
+                    print("Let me sleep for 5 seconds")
+                    print("ZZzzzz...")
+                    time.sleep(5)
+                    print("Was a nice sleep, now let me continue... \n\n")
+                    break
 
 
     #Subdomain list scan, user enters a path to subdomain list text file
