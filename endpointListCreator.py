@@ -21,7 +21,7 @@ print(r"""
 """)
 ok_count = 0
 response_data = ""
-headers = {'User-Agent': 'Googlebot'}
+headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36'}
 
 def start():
     action = input("What would you like to do? \n\n 1- Generate endpoint wordlist \n 2- Crawl the application \n\n Your Choice: ")
@@ -71,7 +71,7 @@ def start():
             start()
     
     #action 2 - crawl and print response code
-    if action == "2":
+    elif action == "2":
         scan_type = input("\n Choose Scan Type\n________________ \n\n 1- Single Target \n 2- Subdomain List \n\n Your Choice: ")
 
         #Single target scan, user enters a single URL
@@ -111,17 +111,17 @@ def start():
                     try:
                         print("Trying to GET " + target + line)
                         r = requests.get((target+line), headers=headers)
-                        print("Response Code: "+ r + "\n\n")
+                        print(r)
                         break
 
                     except:
-                        print("\n\nConnection refused by the server...")
+                        print("\nConnection refused by the server...")
                         print("Let me sleep for 5 seconds")
                         print("ZZzzzz...")
                         time.sleep(5)
-                        print("Was a nice sleep, now let me continue... \n\n")
+                        print("Was a nice sleep, now let me continue... \n")
                         break
-
+    
 
 if __name__ == "__main__":
     start()
